@@ -14,6 +14,12 @@ RUN apk add --update curl
 # debug
 RUN bundle version
 
+# Force rubygems update to prevent build errors
+RUN gem install rubygems-update --no-document -v ">= 3.3.22, < 3.4.0"
+
+# debug
+RUN bundle version
+
 COPY LICENSE README.md /
 
 COPY entrypoint.sh /
